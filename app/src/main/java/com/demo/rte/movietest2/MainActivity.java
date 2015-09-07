@@ -4,14 +4,24 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import com.google.gson.Gson;
+
+import adapters.MovieAdapter;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private ListView movieList;
+    private MovieAdapter movieAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        movieList = (ListView) findViewById(R.id.movie_list);
+        movieAdapter = new MovieAdapter(this);
+        movieList.setAdapter(movieAdapter);
     }
 
     @Override
