@@ -2,6 +2,7 @@ package ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -51,6 +52,9 @@ public class MovieCell extends RelativeLayout {
     private void updateUI(){
         this.movieTitle.setText(movie.getTitle());
         this.movieDescription.setText(movie.getOverview());
-        Picasso.with(getContext()).load(APIConstants.BASE_URL + APIConstants.IMAGE_SIZE_300_URL + movie.getPoster_path());
+        String imageURL = APIConstants.IMAGE_BASE_URL + APIConstants.IMAGE_SIZE_300_URL + movie.getPoster_path();
+        Log.e("IMAGE URL", imageURL);
+        Picasso.with(getContext()).load(APIConstants.IMAGE_BASE_URL + APIConstants.IMAGE_SIZE_300_URL + movie.getPoster_path());
+
     }
 }
