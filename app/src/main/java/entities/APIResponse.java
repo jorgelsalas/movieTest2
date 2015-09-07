@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public class APIResponse {
 
     long page;
-    ArrayList<Movie2> results;
+    ArrayList<Movie> results;
 
-    public APIResponse(long page, ArrayList<Movie2> results) {
+    public APIResponse(long page, ArrayList<Movie> results) {
         this.page = page;
         this.results = results;
     }
@@ -23,11 +23,11 @@ public class APIResponse {
         this.page = page;
     }
 
-    public ArrayList<Movie2> getResults() {
+    public ArrayList<Movie> getResults() {
         return results;
     }
 
-    public void setResults(ArrayList<Movie2> results) {
+    public void setResults(ArrayList<Movie> results) {
         this.results = results;
     }
 }

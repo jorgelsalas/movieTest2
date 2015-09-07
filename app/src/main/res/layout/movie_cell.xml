@@ -31,6 +31,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/movie_description_placeholder"
         android:id="@+id/description"
+        android:maxLines="4"
+        android:ellipsize="end"
         android:layout_below="@+id/title"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

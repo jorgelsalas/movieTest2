@@ -5,13 +5,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 import adapters.MovieAdapter;
+import asynctasks.movieQueryTask;
+import entities.Movie;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    //TODO: Improve rest client adding api key in every call with interceptor
     private ListView movieList;
     private MovieAdapter movieAdapter;
 
@@ -22,6 +26,7 @@ public class MainActivity extends ActionBarActivity {
         movieList = (ListView) findViewById(R.id.movie_list);
         movieAdapter = new MovieAdapter(this);
         movieList.setAdapter(movieAdapter);
+        new movieQueryTask(this).execute("");
     }
 
     @Override
@@ -44,5 +49,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setNewMovies(ArrayList<Movie> newMovies){
+        movieAdapter.setNewMovies(newMovies);
     }
 }

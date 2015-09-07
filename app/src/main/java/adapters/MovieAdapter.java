@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 //import com.example.jorge.movies.R;
 
 import com.demo.rte.movietest2.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,11 @@ public class MovieAdapter extends BaseAdapter {
         movies.add(new Movie("peli5", "Desc peli5"));
     }
 
+    public void setNewMovies(ArrayList<Movie> newMovies){
+        this.movies = newMovies;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return movies.size();
@@ -71,7 +77,9 @@ public class MovieAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = (MovieCell) inflater.inflate(R.layout.movie_cell, null);
         }
-        Movie mov = new Movie(movies.get(position).getTitle(), movies.get(position).getDescription());
+        //Movie mov = new Movie(movies.get(position).getTitle(), movies.get(position).getOverview());
+        Movie mov = movies.get(position);
+        //Picasso.with(mContext).load("").into();
         v.setModel(mov);
         return v;
     }

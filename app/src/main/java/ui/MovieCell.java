@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 
 import com.demo.rte.movietest2.R;
+import com.squareup.picasso.Picasso;
 
+import constants.APIConstants;
 import entities.Movie;
 
 
@@ -48,6 +50,7 @@ public class MovieCell extends RelativeLayout {
 
     private void updateUI(){
         this.movieTitle.setText(movie.getTitle());
-        this.movieDescription.setText(movie.getDescription());
+        this.movieDescription.setText(movie.getOverview());
+        Picasso.with(getContext()).load(APIConstants.BASE_URL + APIConstants.IMAGE_SIZE_300_URL + movie.getPoster_path());
     }
 }
