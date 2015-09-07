@@ -9,7 +9,14 @@ import android.widget.TextView;
 
 
 import com.demo.rte.movietest2.R;
+import com.squareup.okhttp.Interceptor;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 
 import constants.APIConstants;
 import entities.Movie;
@@ -54,7 +61,8 @@ public class MovieCell extends RelativeLayout {
         this.movieDescription.setText(movie.getOverview());
         String imageURL = APIConstants.IMAGE_BASE_URL + APIConstants.IMAGE_SIZE_300_URL + movie.getPoster_path();
         Log.e("IMAGE URL", imageURL);
-        Picasso.with(getContext()).load(APIConstants.IMAGE_BASE_URL + APIConstants.IMAGE_SIZE_300_URL + movie.getPoster_path());
 
+
+        Picasso.with(getContext()).load(APIConstants.IMAGE_BASE_URL + APIConstants.IMAGE_SIZE_150_URL + movie.getPoster_path()).into(moviePoster);
     }
 }

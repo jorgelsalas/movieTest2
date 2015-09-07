@@ -6,10 +6,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.squareup.okhttp.Interceptor;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.squareup.picasso.OkHttpDownloader;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import adapters.MovieAdapter;
 import asynctasks.movieQueryTask;
+import constants.APIConstants;
 import entities.Movie;
 
 
@@ -27,6 +36,23 @@ public class MainActivity extends ActionBarActivity {
         movieAdapter = new MovieAdapter(this);
         movieList.setAdapter(movieAdapter);
         new movieQueryTask(this).execute("");
+
+        //Move somewhere ese
+        OkHttpClient picassoClient = new OkHttpClient();
+
+        picassoClient.interceptors().add(new Interceptor() {
+
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request newRequest = chain.request().newBuilder()
+                        .addHeader("api_key", APIConstants.API_KEY)
+                        .build();
+                return chain.proceed(newRequest);
+            }
+        });
+
+        new Picasso.Builder(this).downloader(new OkHttpDownloader(picassoClient)).build();
+        //End move somewhere else
     }
 
     @Override
