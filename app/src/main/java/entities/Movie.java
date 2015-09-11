@@ -4,6 +4,8 @@ package entities;
  * Created by jorge on 9/6/15. Movie type
  */
 public class Movie {
+
+    String id;
     String original_title;
     String overview;
     String poster_path;
@@ -16,6 +18,8 @@ public class Movie {
         this.title = title;
     }
 
+
+
     public Movie(String original_title, String overview) {
         this.original_title = original_title;
         this.overview = overview;
@@ -27,6 +31,21 @@ public class Movie {
         this.poster_path = poster_path;
     }
 
+    public Movie(String id, String original_title, String overview, String poster_path, String title) {
+        this.id = id;
+        this.original_title = original_title;
+        this.overview = overview;
+        this.poster_path = poster_path;
+        this.title = title;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getOriginal_title() {
         return original_title;

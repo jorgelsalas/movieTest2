@@ -11,6 +11,8 @@ public class APIConstants {
     public static final String IMAGE_BASE_URL = "http://image.tmdb.org/t/p/";
     public static final String IMAGE_SIZE_300_URL = "w300";
     public static final String IMAGE_SIZE_150_URL = "w150";
+    public static final String YOUTUBE_VIDEO_URL = "https://youtu.be/";
+
 
     //http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg
 

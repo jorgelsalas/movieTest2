@@ -1,8 +1,10 @@
 package api;
 
-import entities.APIResponse;
+import entities.MoviesResponse;
+import entities.VideosResponse;
 import retrofit.Call;
 import retrofit.http.GET;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**
@@ -14,5 +16,8 @@ public interface MovieService {
     //ArrayList<Movie> discoverMovies(@Query("api_key")String api_key);
 
     @GET("discover/movie")
-    Call<APIResponse> discoverMovies(@Query("api_key")String api_key);
+    Call<MoviesResponse> discoverMovies(@Query("api_key")String api_key);
+
+    @GET("movie/{id}/videos")
+    Call<VideosResponse> getMovieVideos(@Path("id")String id, @Query("api_key")String api_key);
 }

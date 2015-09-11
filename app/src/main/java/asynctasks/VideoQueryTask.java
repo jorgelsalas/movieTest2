@@ -5,12 +5,14 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.demo.rte.movietest2.MainActivity;
+import com.demo.rte.movietest2.VideoActivity;
 
 import java.io.IOException;
 
 import api.MovieService;
 import constants.APIConstants;
 import entities.MoviesResponse;
+import entities.VideosResponse;
 import retrofit.Call;
 import retrofit.GsonConverterFactory;
 import retrofit.Response;
@@ -19,18 +21,20 @@ import retrofit.Retrofit;
 /**
  * Created by jorge on 9/6/15.
  */
-public class movieQueryTask extends AsyncTask<String, Integer, String> {
+public class VideoQueryTask extends AsyncTask<String, Integer, String> {
 
     private Context mContext;
-    private MoviesResponse moviesResponse = null;
+    private VideosResponse videosResponse = null;
+    private String id;
 
-    public movieQueryTask(){
+    public VideoQueryTask(){
 
     }
 
-    public movieQueryTask(Context context){
+    public VideoQueryTask(Context context, String id){
         this.mContext = context;
-
+        this.id = id;
+        Log.e("MOVIE ID FROM TASK:", id);
     }
 
 
@@ -43,7 +47,7 @@ public class movieQueryTask extends AsyncTask<String, Integer, String> {
         MovieService service = retrofit.create(MovieService.class);
         //ArrayList<Movie> movies = service.discoverMovies(APIConstants.API_KEY);
         //Log.e("",movies.toString());
-        Call<MoviesResponse> call = service.discoverMovies(APIConstants.API_KEY);
+        Call<VideosResponse> call = service.getMovieVideos(id, APIConstants.API_KEY);
         //response.toString();
         try {
             Response response =  call.execute();
@@ -52,7 +56,7 @@ public class movieQueryTask extends AsyncTask<String, Integer, String> {
             if(null != response.errorBody()) Log.e("error body to string:", response.errorBody().toString());
 
             Log.e("response to string:", response.toString());
-            Log.e("body to string:", response.body().toString());
+            //Log.e("body to string:", response.body().toString());
             Log.e("Code:", "" + response.code());
             Log.e("Headers to string:", response.headers().toString());
             Log.e("isSuccess to string:", "" + response.isSuccess());
@@ -60,9 +64,9 @@ public class movieQueryTask extends AsyncTask<String, Integer, String> {
             Log.e("raw to string:", "" + response.raw().toString());
             Log.e("response to string:", response.toString());
 
-            moviesResponse = (MoviesResponse) response.body();
-            String st = moviesResponse.getResults().toString();
-            Log.e("APIRESPONSE RESULTS",st);
+            videosResponse = (VideosResponse) response.body();
+            //String st = videosResponse.getResults().toString();
+            //Log.e("APIRESPONSE RESULTS",st);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,7 +78,11 @@ public class movieQueryTask extends AsyncTask<String, Integer, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        ((MainActivity) mContext).setNewMovies(moviesResponse.getResults());
+        if(videosResponse.getResults() != null){
+            String key = videosResponse.getResults().get(0).getKey();
+            ((VideoActivity) mContext).setNewVideo(APIConstants.YOUTUBE_VIDEO_URL+key);
+        }
+
     }
     public void logIt(String st){
         Log.e("",st);

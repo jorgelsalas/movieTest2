@@ -5,12 +5,12 @@ import java.util.ArrayList;
 /**
  * Created by jorge on 9/6/15.
  */
-public class APIResponse {
+public class MoviesResponse {
 
     long page;
     ArrayList<Movie> results;
 
-    public APIResponse(long page, ArrayList<Movie> results) {
+    public MoviesResponse(long page, ArrayList<Movie> results) {
         this.page = page;
         this.results = results;
     }

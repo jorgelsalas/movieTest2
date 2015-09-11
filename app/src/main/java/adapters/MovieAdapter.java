@@ -1,6 +1,7 @@
 package adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,12 @@ import android.widget.BaseAdapter;
 //import com.example.jorge.movies.R;
 
 import com.demo.rte.movietest2.R;
+import com.demo.rte.movietest2.VideoActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import constants.GeneralConstants;
 import entities.Movie;
 import ui.MovieCell;
 
@@ -81,6 +84,16 @@ public class MovieAdapter extends BaseAdapter {
         Movie mov = movies.get(position);
         //Picasso.with(mContext).load("").into();
         v.setModel(mov);
+        final String movieId = mov.getId();
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent videoIntent = new Intent(mContext, VideoActivity.class);
+                videoIntent.putExtra(GeneralConstants.MOVIE_ID_KEY, movieId);
+                mContext.startActivity(videoIntent);
+
+            }
+        });
         return v;
     }
 }
