@@ -17,6 +17,7 @@ import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import asynctasks.VideoQueryTask;
+import asynctasks.VideoQueryTask2;
 import constants.APIConstants;
 import constants.GeneralConstants;
 
@@ -38,7 +39,7 @@ public class VideoActivity2 extends YouTubeBaseActivity implements YouTubePlayer
 
         String movieId = getIntent().getExtras().getString(GeneralConstants.MOVIE_ID_KEY);
         Log.e("MOVIE ID:", movieId);
-        new VideoQueryTask(this, movieId).execute("");
+        new VideoQueryTask2(this, movieId).execute("");
     }
 
     public void setNewVideo(String video_key){
