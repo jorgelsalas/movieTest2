@@ -26,6 +26,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.demo.rte.movietest2.MainActivity" />
         </activity>
+        <activity
+            android:name=".VideoActivity2"
+            android:label="@string/title_activity_video_activity2"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.demo.rte.movietest2.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

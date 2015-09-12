@@ -12,6 +12,9 @@ public class APIConstants {
     public static final String IMAGE_SIZE_300_URL = "w300";
     public static final String IMAGE_SIZE_150_URL = "w150";
     public static final String YOUTUBE_VIDEO_URL = "https://youtu.be/";
+    public static final String YOUTUBE_VIDEO_URL2 = "http://youtu.be/";
+
+    public static final String YOUTUBE_API_KEY = "AIzaSyBD4D1uhmuwsGTNSOxTgQX14q5DHgIehFc";
 
 
     //http://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg

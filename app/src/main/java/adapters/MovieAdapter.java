@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 
 import com.demo.rte.movietest2.R;
 import com.demo.rte.movietest2.VideoActivity;
+import com.demo.rte.movietest2.VideoActivity2;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -88,7 +89,7 @@ public class MovieAdapter extends BaseAdapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent videoIntent = new Intent(mContext, VideoActivity.class);
+                Intent videoIntent = new Intent(mContext, VideoActivity2.class);
                 videoIntent.putExtra(GeneralConstants.MOVIE_ID_KEY, movieId);
                 mContext.startActivity(videoIntent);
 

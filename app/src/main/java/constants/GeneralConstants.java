@@ -6,4 +6,5 @@ package constants;
 public class GeneralConstants {
 
     public static final String MOVIE_ID_KEY = "movie id";
+
 }

@@ -7,4 +7,5 @@
     <string name="movie_description_placeholder">Movie description placeholder</string>
     <string name="movie_poster_content_description">Movie poster</string>
     <string name="title_activity_video">VideoActivity</string>
+    <string name="title_activity_video_activity2">VideoActivity2</string>
 </resources>
